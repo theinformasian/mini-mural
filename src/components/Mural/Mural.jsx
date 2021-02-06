@@ -53,8 +53,7 @@ class Mural extends React.Component {
       width,
       height,
       x: x - pixelsToInt(width) / 2,
-      y: y - pixelsToInt(height) / 2,
-      tabIndex: "0"
+      y: y - pixelsToInt(height) / 2
     };
 
     addNote(noteToAdd);

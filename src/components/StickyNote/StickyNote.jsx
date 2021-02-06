@@ -15,8 +15,7 @@ class StickyNote extends React.Component {
     setSelectedNote: PropTypes.func,
     pushSelectedNote: PropTypes.func,
     updateNote: PropTypes.func,
-    deleteNote: PropTypes.func,
-    tabindex: PropTypes.string
+    deleteNote: PropTypes.func
   };
 
   static defaultProps = {
@@ -110,6 +109,7 @@ class StickyNote extends React.Component {
           transform: `translate(${x}px,${y}px)`,
           zIndex: selected ? "999999" : 1
         }}
+        tabIndex="0"
       >
         <div
           className="container"
