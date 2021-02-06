@@ -15,7 +15,8 @@ class StickyNote extends React.Component {
     setSelectedNote: PropTypes.func,
     pushSelectedNote: PropTypes.func,
     updateNote: PropTypes.func,
-    deleteNote: PropTypes.func
+    deleteNote: PropTypes.func,
+    tabindex: PropTypes.string
   };
 
   static defaultProps = {
