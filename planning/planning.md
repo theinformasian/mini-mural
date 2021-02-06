@@ -9,11 +9,11 @@ WAVE audit
 * silly logo alt-text, -> "logo, empty group"
 * completely keyboard inaccessible, tabindex="-1"
 * Cheating tests:
-    * clicking color icon w/ mouse = "newline"
-    * double clicking on canvas, aka creating sticky = "selected", and not SR focusable
-    * after entering text in a sticky, SR can access it
+  * clicking color icon w/ mouse = "newline"
+  * double clicking on canvas, aka creating sticky = "selected", and not SR focusable
+  * after entering text in a sticky, SR can access it
 * I don't quite understand why, but tabindex doesn't necessarily make it visible to SR. e.g. added tabindex 0 to one of the colorBox's, and it's still not SR focusable
-    * some things are aria hidden but the elements don't seem to be
+  * some things are aria hidden but the elements don't seem to be
 * and there's a clipboard manager that's aria-hidden?
 * there is a .Mural:focus style that's outline: none...
 
@@ -22,16 +22,19 @@ WAVE audit
 ### Primary
 
 #### Semantics
+
 * Make sticky notes a button; like a 'card' component
 * Make ColorBox a button
 * Add h1 and title
 * give things reasonable names
 
 #### Keyboard interactions
-* Add "backspace" keypress to delete __OR__ make delete icon tabbable
+
+* Add "backspace" keypress to delete **OR** make delete icon (FontAwesomeButton) tabbable
 * remove unnecessary tabIndex="-1" from Mural component
 
 ### Secondary
+
 * add keyboard instructions (e.g. Add Note, Edit Note) as a popup menu
 * make clipboard manager always on, group w/ above instructions
 * add keyboard shortcut to create new note
