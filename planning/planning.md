@@ -29,8 +29,8 @@ WAVE audit
 
 #### Keyboard interactions
 
-* Add "backspace" keypress to delete **OR** make delete icon (FontAwesomeButton) tabbable
-* remove unnecessary tabIndex="-1" from Mural component
+* ~~Add "backspace" keypress to delete **OR** make delete icon (FontAwesomeButton) tabbable~~ done
+* ~~remove unnecessary tabIndex="-1" from Mural component~~ done
 * Add keyboard focus to StickyNote event listener
 * add "esc" keypress to textarea when editMode === true to move to selected state
 

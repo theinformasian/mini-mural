@@ -42,7 +42,7 @@ class StickyNote extends React.Component {
     // possible performance issues, if it's always listening for keyups and checking if they're 'enter'
   }
 
-  keyPressed = e => {
+  keyDown = e => {
     //it triggers by pressing the enter key
     console.log("key pressed");
     if (e.keyCode === 13) {
@@ -140,7 +140,7 @@ class StickyNote extends React.Component {
             style={{ color: textColor, userSelect: editMode ? "text" : "none" }}
             suppressContentEditableWarning="true"
             tabIndex="0"
-            onKeyPress={this.keyPressed}
+            onKeyDown={this.keyDown}
           >
             {text}
           </p>
