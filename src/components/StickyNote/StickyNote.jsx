@@ -35,9 +35,20 @@ class StickyNote extends React.Component {
   }
 
   componentDidMount() {
+    this.textarea.current.addEventListener("focus", this.selectNote, true);
+    this.textarea.current.addEventListener("blur", this.handleOnBlur, true);
     this.textarea.current.addEventListener("click", this.selectNote);
     this.textarea.current.addEventListener("dblclick", this.editNote);
+    // possible performance issues, if it's always listening for keyups and checking if they're 'enter'
   }
+
+  keyPressed = e => {
+    //it triggers by pressing the enter key
+    console.log("key pressed");
+    if (e.keyCode === 13) {
+      this.editNote;
+    }
+  };
 
   selectNote = e => {
     const {
@@ -109,7 +120,6 @@ class StickyNote extends React.Component {
           transform: `translate(${x}px,${y}px)`,
           zIndex: selected ? "999999" : 1
         }}
-        tabIndex="0"
       >
         <div
           className="container"
@@ -120,6 +130,7 @@ class StickyNote extends React.Component {
           }}
           id={id}
           data-type="sticky-note"
+          aria-label="Sticky note"
         >
           <p
             className="sticky-note-content"
@@ -128,6 +139,8 @@ class StickyNote extends React.Component {
             ref={this.textarea}
             style={{ color: textColor, userSelect: editMode ? "text" : "none" }}
             suppressContentEditableWarning="true"
+            tabIndex="0"
+            onKeyPress={this.keyPressed}
           >
             {text}
           </p>
