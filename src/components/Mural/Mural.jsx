@@ -38,6 +38,7 @@ class Mural extends React.Component {
   };
 
   addNoteToMural = e => {
+    console.log("adding note to mural");
     if (e.target.classList.contains("sticky-note-content")) {
       return;
     }
@@ -60,8 +61,15 @@ class Mural extends React.Component {
   };
 
   handleKeyDown = e => {
+    console.log("keydown on Mural");
     if (e.key === "Shift") {
       this.props.enableMultipleSelection();
+    }
+    if (e.key === "Enter") {
+      console.log("enter key pressed");
+      // random new note props
+      const note = {};
+      this.addNoteToMural(note);
     }
   };
 
@@ -72,6 +80,7 @@ class Mural extends React.Component {
   };
 
   render() {
+    // displays all the notes currently in list
     const { notes, selectedNotes } = this.props;
     const StickyNotes = Object.values(notes).map(
       ({ id, text, color, width, height, x, y }) => {
@@ -94,10 +103,10 @@ class Mural extends React.Component {
     );
 
     return (
-      <div id="Mural" className="Mural" ref={this.mural} tabIndex="-1">
+      <div id="Mural" className="Mural" ref={this.mural}>
         <Welcome />
         {StickyNotes}
-        <Toolbar />
+        <Toolbar addNoteToMural={this.addNoteToMural} />
       </div>
     );
   }

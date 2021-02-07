@@ -4,15 +4,21 @@ import "./styles.css";
 
 class FontAwesomeButton extends React.Component {
   static propTypes = {
+    buttonClass: PropTypes.string,
     faClass: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired, // require a label for icon button
     handleOnClick: PropTypes.func
   };
 
+  /** // onClick={handleOnClick} */
   render() {
-    const { faClass, label, handleOnClick } = this.props;
+    const { buttonClass, faClass, label, handleOnClick } = this.props;
     return (
-      <button aria-label={label} className="icon" onClick={handleOnClick}>
+      <button
+        aria-label={label}
+        className={buttonClass}
+        onClick={handleOnClick}
+      >
         <i className={faClass} aria-hidden="true" />
       </button>
     );

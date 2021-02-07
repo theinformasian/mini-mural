@@ -14,3 +14,15 @@
   left: 0;
   z-index: 999999;
 }
+
+.toolbar-add-button {
+  top: 10%;
+  position: relative;
+  bottom: 3%;
+  left: 3.5%;
+}
+
+.toolbar-add-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px #3c73ff;
+}
