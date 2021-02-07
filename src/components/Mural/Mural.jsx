@@ -94,7 +94,7 @@ class Mural extends React.Component {
     );
 
     return (
-      <div id="Mural" className="Mural" ref={this.mural} tabIndex="-1">
+      <div id="Mural" className="Mural" ref={this.mural}>
         <Welcome />
         {StickyNotes}
         <Toolbar />
