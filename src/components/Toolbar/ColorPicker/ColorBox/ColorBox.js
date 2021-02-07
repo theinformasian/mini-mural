@@ -10,6 +10,11 @@ class ColorBox extends React.Component {
     color: PropTypes.string.isRequired
   };
 
+  handleFocus = e => {
+    // display thicker border
+    // display plus icon over center
+  };
+
   handleClick = e => {
     const color = e.target.dataset.color;
     this.props.onClick(color);
@@ -23,7 +28,7 @@ class ColorBox extends React.Component {
       const borderColor = Color(color)
         .darken(0.4)
         .desaturate(0.2);
-      border = `2px solid ${borderColor}`;
+      border = `3px solid ${borderColor}`;
     } else {
       border = "1px solid #bbbbbb";
     }
@@ -36,9 +41,10 @@ class ColorBox extends React.Component {
     const className = classnames("colorBox", { activeBox: active });
 
     return (
-      <div
+      <button
         className={className}
         onClick={this.handleClick}
+        onFocus={this.handleFocus}
         data-color={color}
         style={{ background: color, border: this.getBorderStyle() }}
       />

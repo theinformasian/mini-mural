@@ -7,21 +7,18 @@ class Welcome extends React.Component {
   render() {
     const { notes } = this.props;
 
-    if (!isEmpty(notes)) return null;
+    if (!isEmpty(notes)) return null; // if there are notes present, don't return this
 
     return (
       <div className="Welcome">
         <img src={logo} className="logo" alt="logo" />
         <div className="instructions">
+          <p>Click on a color icon to add a note of that color.</p>
           <p>
-            Add Note: <span className="key">Double Click</span>
+            Edit Note: <span className="key">Double Click</span>
           </p>
           <p>
-            Edit Note: <span className="key">Click</span>
-          </p>
-          <p>
-            Multiple Selection: <span className="key">Shift</span> +{" "}
-            <span className="key">V</span>
+            Multiple Selection: <span className="key">Shift</span>
           </p>
           <p>
             Copy Notes: <span className="key">Ctrl</span> +{" "}
