@@ -23,15 +23,16 @@ WAVE audit
 
 #### Semantics
 
-* Make sticky notes a button; like a 'card' component
 * Make ColorBox a button
 * Add h1 and title
 * give things reasonable names
 
 #### Keyboard interactions
 
-* Add "backspace" keypress to delete **OR** make delete icon (FontAwesomeButton) tabbable
-* remove unnecessary tabIndex="-1" from Mural component
+* ~~Add "backspace" keypress to delete **OR** make delete icon (FontAwesomeButton) tabbable~~ done
+* ~~remove unnecessary tabIndex="-1" from Mural component~~ done
+* Add keyboard focus to StickyNote event listener
+* add "esc" keypress to textarea when editMode === true to move to selected state
 
 ### Secondary
 
@@ -43,3 +44,7 @@ WAVE audit
 ## Further considerations
 
 Development was done on a Mac, and I did not test on a PC. Would consider if the chosen keyboard mappings conflict with either Windows or Mac system mappings (e.g. `ctrl` + `v` was chosen to avoid overlapping with `cmd` + `v`, but what about on PC)
+
+## Other notes
+
+DO NOT use `role="application"`, as this disables native keyboard behaviors and controls (e.g. `cmd` + `c`)
