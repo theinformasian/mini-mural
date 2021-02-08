@@ -34,6 +34,7 @@ class StickyNote extends React.Component {
     super(props);
     this.textarea = React.createRef();
     this.state = { editMode: false };
+    this.focusTextInput = this.focusTextInput.bind(this);
   }
 
   componentDidMount() {
@@ -42,6 +43,17 @@ class StickyNote extends React.Component {
     this.textarea.current.addEventListener("click", this.selectNote);
     this.textarea.current.addEventListener("dblclick", this.editNote);
     // possible performance issues, if it's always listening for keyups and checking if they're 'enter'
+  }
+
+  componentWillUnmount() {
+    // if note is being removed, set focus to next element
+    // console.log("sticky note unmounting!");
+    // this.textarea.current.nextElementByTabIndex.focus();
+  }
+
+  focusTextInput() {
+    this.setState({ editMode: true });
+    this.textarea.current.focus();
   }
 
   selectNote = e => {
@@ -117,7 +129,7 @@ class StickyNote extends React.Component {
           zIndex: selected ? "999999" : 1
         }}
       >
-        <div
+        <button
           className="container"
           style={{
             background: color,
@@ -127,6 +139,7 @@ class StickyNote extends React.Component {
           id={id}
           data-type="sticky-note"
           aria-labelledby={`${h3Heading} sticky-note-content`}
+          onClick={this.focusTextInput}
         >
           <h3 id={h3Heading}>Sticky Note</h3>
           <p
@@ -141,15 +154,15 @@ class StickyNote extends React.Component {
           >
             {text}
           </p>
-          {selected && (
-            <FontAwesomeButton
-              buttonClass={"icon"}
-              faClass={"fa fa-trash-o"}
-              label={"delete"}
-              handleOnClick={this.handleDelete}
-            />
-          )}
-        </div>
+        </button>
+        {selected && (
+          <FontAwesomeButton
+            buttonClass={"icon"}
+            faClass={"fa fa-trash-o"}
+            label={"delete"}
+            handleOnClick={this.handleDelete}
+          />
+        )}
       </div>
     );
   }
