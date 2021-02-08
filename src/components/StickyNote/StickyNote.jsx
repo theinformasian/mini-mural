@@ -16,7 +16,8 @@ class StickyNote extends React.Component {
     pushSelectedNote: PropTypes.func,
     clearSelectedNote: PropTypes.func,
     updateNote: PropTypes.func,
-    deleteNote: PropTypes.func
+    deleteNote: PropTypes.func,
+    announce: PropTypes.func
   };
 
   static defaultProps = {
@@ -65,6 +66,7 @@ class StickyNote extends React.Component {
 
   handleDelete = () => {
     const { id, deleteNote } = this.props;
+    this.props.announce("Note deleted.");
     deleteNote(id);
   };
 
@@ -104,6 +106,7 @@ class StickyNote extends React.Component {
       .desaturate(0.3);
     const boxShadowColor = Color(color).darken(0.3);
     const h3Heading = id + "-h3";
+
     return (
       <div
         className={StickyNoteClassnames}
@@ -123,7 +126,7 @@ class StickyNote extends React.Component {
           }}
           id={id}
           data-type="sticky-note"
-          aria-labelledby={h3Heading}
+          aria-labelledby={`${h3Heading} sticky-note-content`}
         >
           <h3 id={h3Heading}>Sticky Note</h3>
           <p

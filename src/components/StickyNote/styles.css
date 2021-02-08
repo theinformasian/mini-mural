@@ -42,7 +42,8 @@
 }
 
 h3 {
-  /* repurposing h3s for all sticky notes/object level SR content*/
+  /* repurposing h3s as offscreen SR content variables*/
+  /* can't remember if that's great or terrible...*/
   display: none;
 }
 

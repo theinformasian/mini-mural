@@ -10,6 +10,13 @@ class FontAwesomeButton extends React.Component {
     handleOnClick: PropTypes.func
   };
 
+  // the HACKIEST workaround...re-hide announcements when focus moves off a FontAwesomeButton
+  handleOnBlur = e => {
+    document
+      .getElementById("announcements")
+      .setAttribute("aria-hidden", "true");
+  };
+
   /** // onClick={handleOnClick} */
   render() {
     const { buttonClass, faClass, label, handleOnClick } = this.props;
@@ -18,6 +25,7 @@ class FontAwesomeButton extends React.Component {
         aria-label={label}
         className={buttonClass}
         onClick={handleOnClick}
+        onBlur={this.handleOnBlur}
       >
         <i className={faClass} aria-hidden="true" />
       </button>

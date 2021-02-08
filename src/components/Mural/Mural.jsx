@@ -31,6 +31,15 @@ class Mural extends React.Component {
     this.mural.current.addEventListener("keyup", this.handleKeyUp);
   }
 
+  ariaAnnounce = content => {
+    const ariaLiveRegion = document.getElementById("announcements");
+    ariaLiveRegion.setAttribute("aria-hidden", "false"); // reveal to SR
+    ariaLiveRegion.innerHTML = ""; // clear previous
+    window.setTimeout(function() {
+      ariaLiveRegion.innerHTML = content;
+    }, 100);
+  };
+
   clearSelectedNotes = e => {
     if (e.target.isEqualNode(this.mural.current)) {
       this.props.clearSelectedNotes();
@@ -38,6 +47,8 @@ class Mural extends React.Component {
   };
 
   addNoteToMural = e => {
+    this.ariaAnnounce("New note added.");
+
     if (e.target.classList.contains("sticky-note-content")) {
       return;
     }
@@ -107,16 +118,25 @@ class Mural extends React.Component {
             y={y}
             selected={selected}
             key={id}
+            announce={this.ariaAnnounce}
           />
         );
       }
     );
 
+    // span for aria live region; onclick handled by button parent
+    // role="status" is implicitly aria-live="polite"
     return (
       <div id="Mural" className="Mural" ref={this.mural}>
         <Welcome />
         {StickyNotes}
         <Toolbar addNoteToMural={this.addNoteToMural} />
+        <span
+          className="sr-only"
+          id="announcements"
+          role="status"
+          aria-hidden="true"
+        />
       </div>
     );
   }
