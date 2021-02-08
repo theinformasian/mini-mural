@@ -1,5 +1,6 @@
 import React from "react";
 import { isEmpty } from "lodash";
+import FontAwesomeButton from "../FontAwesomeButton";
 import logo from "./logo.svg";
 import "./styles.css";
 
@@ -12,6 +13,12 @@ class Welcome extends React.Component {
     return (
       <div className="Welcome">
         <img src={logo} className="logo" alt="logo" />
+        <FontAwesomeButton
+          buttonClass={"close-modal"}
+          faClass={"fa fa-times-circle-o"}
+          label={"Add note"}
+          handleOnClick={this.addButtonClick}
+        />
         <div className="instructions">
           <p>Click on a color icon to add a note of that color.</p>
           <p>
