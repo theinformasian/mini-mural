@@ -128,7 +128,10 @@ class Mural extends React.Component {
     // role="status" is implicitly aria-live="polite"
     return (
       <div id="Mural" className="Mural" ref={this.mural}>
-        <Toolbar addNoteToMural={this.addNoteToMural} />
+        <Toolbar
+          ariaAnnounce={this.ariaAnnounce}
+          addNoteToMural={this.addNoteToMural}
+        />
         <Welcome />
         {StickyNotes}
         <span

@@ -2,20 +2,19 @@ import React from "react";
 import PropTypes from "prop-types";
 import Color from "color";
 import classnames from "classnames";
-import {
-  COLOR_PICKER_DEFAULT,
-  COLOR_PICKER_NAMES
-} from "../../../../constants";
 import "./styles.css";
 
 class ColorBox extends React.Component {
   static propTypes = {
     onClick: PropTypes.func,
-    color: PropTypes.string.isRequired
+    color: PropTypes.string.isRequired,
+    ariaAnnounce: PropTypes.func
   };
 
   handleClick = e => {
     const color = e.target.dataset.color;
+    // const msg = color + ", selected";
+    // this.props.ariaAnnounce(msg);
     console.log("ColorBox triggered, setting color: " + color);
     document.getElementById(color).focus();
     this.props.onClick(color);
@@ -39,9 +38,8 @@ class ColorBox extends React.Component {
   };
 
   render() {
-    const { color, active } = this.props;
+    const { color, active, colorName } = this.props;
     const className = classnames("colorBox", { activeBox: active });
-    const colorName = COLOR_PICKER_NAMES[COLOR_PICKER_DEFAULT.indexOf(color)];
 
     return (
       <button
