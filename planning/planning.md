@@ -45,9 +45,19 @@ WAVE audit
 
 Development was done on a Mac, and I did not test on a PC. Would consider if the chosen keyboard mappings conflict with either Windows or Mac system mappings (e.g. `ctrl` + `v` was chosen to avoid overlapping with `cmd` + `v`, but what about on PC)
 
+### Open Issues
+
+| Status | Component           | Description                                                                                                                                                                      |
+| ------ | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `open` | Mural.jsx (line 52) | KNOWN BUG: due to top left corner placement, a note could be placed somewhere that extends the window size, which then extends the max coordinate that can be used for placement |
+| `open` | Sticky Notes        | Since the Delete icon is only surfaced via note selection, but is injected into DOM Order after the note, it is "skipped" when tabbing backwards                                 |
+| `open` | Color Picker        | Focus is lost upon "button press"                                                                                                                                                |
+
 ## Other notes
 
 DO NOT use `role="application"`, as this disables native keyboard behaviors and controls (e.g. `cmd` + `c`)
+
+`aria-pressed` syntax confers a checkbox-style toggle property to buttons.
 
 ## Resources
 

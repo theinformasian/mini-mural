@@ -53,9 +53,6 @@ class Mural extends React.Component {
       // if both x and y are 0
       xPos = 140 + Math.floor(Math.random() * (window.innerHeight - 280));
       yPos = 140 + Math.floor(Math.random() * (window.innerWidth - 280));
-      /* KNOWN BUG: due to top left corner placement, a note could  
-      * be placed somewhere that extends the window size, which then 
-      * extends the max coordinate that can be used for placement*/
     } else {
       xPos = x;
       yPos = y;

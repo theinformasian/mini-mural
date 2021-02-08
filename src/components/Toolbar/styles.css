@@ -15,8 +15,14 @@
   z-index: 999999;
 }
 
+.Actions {
+  margin-top: auto;
+  margin-bottom: 10px;
+}
+
 .toolbar-add-button {
   top: 10%;
+  margin-top: 10px;
   position: relative;
   bottom: 3%;
   left: 3.5%;

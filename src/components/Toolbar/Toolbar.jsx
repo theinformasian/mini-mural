@@ -10,21 +10,33 @@ class Toolbar extends React.Component {
     addNoteToMural: PropTypes.func
   };
 
-  handleClick = e => {
+  addButtonClick = e => {
     this.props.addNoteToMural(e);
+  };
+
+  helpButtonClick = e => {
+    console.log("Help is on the way! Eventually!");
   };
 
   render() {
     return (
       <div className="Toolbar">
         <ColorPicker />
-        <FontAwesomeButton
-          buttonClass={"icon toolbar-add-button"}
-          faClass={"fa fa-plus-circle"}
-          label={"Add note"}
-          handleOnClick={this.handleClick}
-        />
         <ClipboardManager />
+        <div className="Actions">
+          <FontAwesomeButton
+            buttonClass={"icon toolbar-add-button"}
+            faClass={"fa fa-plus-circle"}
+            label={"Add note"}
+            handleOnClick={this.addButtonClick}
+          />
+          <FontAwesomeButton
+            buttonClass={"icon toolbar-add-button"}
+            faClass={"fa fa-question-circle"}
+            label={"Help"}
+            handleOnClick={this.helpButtonClick}
+          />
+        </div>
       </div>
     );
   }
