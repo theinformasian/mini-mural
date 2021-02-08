@@ -17,8 +17,9 @@ class ColorBox extends React.Component {
   handleClick = e => {
     const color = e.target.dataset.color;
     console.log("ColorBox triggered, setting color: " + color);
+    document.getElementById(color).focus();
     this.props.onClick(color);
-    document.getElementById(this.props.color);
+    // const what = document.getElementById(this.props.color); // what does this even do
   };
 
   getBorderStyle = () => {
@@ -43,16 +44,17 @@ class ColorBox extends React.Component {
     const colorName = COLOR_PICKER_NAMES[COLOR_PICKER_DEFAULT.indexOf(color)];
 
     return (
-      <div
-        role="button"
-        tabIndex="0"
+      <button
+        // role="button"
+        // tabIndex="0"
         aria-label={colorName}
         className={className}
         onClick={this.handleClick}
-        onKeyPressCapture={this.handleClick}
+        //  onKeyPressCapture={this.handleClick}
         data-color={color}
         id={color}
         style={{ background: color, border: this.getBorderStyle() }}
+        autoFocus={active}
       />
     );
   }

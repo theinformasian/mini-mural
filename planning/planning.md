@@ -73,3 +73,5 @@ DO NOT use `role="application"`, as this disables native keyboard behaviors and 
 
 * W3C [fake button implementation](https://www.w3.org/TR/wai-aria-practices-1.1/examples/button/button.html) resources
 * Inclusive Components' [Toggletip tutorial](https://inclusive-components.design/tooltips-toggletips/) and rationale
+* Re-reading [React refs documentation](https://reactjs.org/docs/refs-and-the-dom.html) -> realization of how to code Sticky Notes
+* I'm too tired to understand react lifecycles to implement, but pretty sure this will be useful later: https://medium.com/swlh/improve-accessibility-in-your-react-app-by-managing-focus-in-mutable-content-4ddf4ed92186
