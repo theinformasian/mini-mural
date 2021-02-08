@@ -129,8 +129,8 @@ class Mural extends React.Component {
     return (
       <div id="Mural" className="Mural" ref={this.mural}>
         <Welcome />
-        {StickyNotes}
         <Toolbar addNoteToMural={this.addNoteToMural} />
+        {StickyNotes}
         <span
           className="sr-only"
           id="announcements"
