@@ -47,13 +47,26 @@ class Mural extends React.Component {
     const width = NOTE_DEFAULT_HEIGHT;
     const height = NOTE_DEFAULT_WIDTH;
 
+    var xPos, yPos;
+
+    if (!(x | y)) {
+      // if both x and y are 0
+      console.log("x and y are " + x + " & " + y + "; making it random");
+      xPos = Math.floor(Math.random() * window.innerHeight);
+      yPos = Math.floor(Math.random() * window.innerWidth);
+      console.log("new x and y are " + x + " & " + y);
+    } else {
+      xPos = x;
+      yPos = y;
+    }
+
     const noteToAdd = {
       text: "",
       color: currentColor,
       width,
       height,
-      x: x - pixelsToInt(width) / 2,
-      y: y - pixelsToInt(height) / 2
+      x: xPos - pixelsToInt(width) / 2,
+      y: yPos - pixelsToInt(height) / 2
     };
 
     addNote(noteToAdd);
