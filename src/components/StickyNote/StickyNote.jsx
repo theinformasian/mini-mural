@@ -102,8 +102,8 @@ class StickyNote extends React.Component {
     const textColor = Color(color)
       .darken(0.4)
       .desaturate(0.3);
-    const boxShadowColor = Color(color).darken(0.1);
-
+    const boxShadowColor = Color(color).darken(0.3);
+    const h3Heading = id + "-h3";
     return (
       <div
         className={StickyNoteClassnames}
@@ -118,13 +118,14 @@ class StickyNote extends React.Component {
           className="container"
           style={{
             background: color,
-            boxShadow: `0px 0px 2px ${boxShadowColor}`,
+            boxShadow: `0px 0px 1px 3px ${boxShadowColor}`,
             padding: selected ? "6px" : "8px"
           }}
           id={id}
           data-type="sticky-note"
-          aria-label="Sticky note"
+          aria-labelledby={h3Heading}
         >
+          <h3 id={h3Heading}>Sticky Note</h3>
           <p
             className="sticky-note-content"
             contentEditable={editMode}
@@ -137,15 +138,15 @@ class StickyNote extends React.Component {
           >
             {text}
           </p>
+          {selected && (
+            <FontAwesomeButton
+              buttonClass={"icon"}
+              faClass={"fa fa-trash-o"}
+              label={"delete"}
+              handleOnClick={this.handleDelete}
+            />
+          )}
         </div>
-        {selected && (
-          <FontAwesomeButton
-            buttonClass={"icon"}
-            faClass={"fa fa-trash-o"}
-            label={"delete"}
-            handleOnClick={this.handleDelete}
-          />
-        )}
       </div>
     );
   }

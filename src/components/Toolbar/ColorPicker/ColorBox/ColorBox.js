@@ -2,6 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import Color from "color";
 import classnames from "classnames";
+import {
+  COLOR_PICKER_DEFAULT,
+  COLOR_PICKER_NAMES
+} from "../../../../constants";
 import "./styles.css";
 
 class ColorBox extends React.Component {
@@ -12,7 +16,9 @@ class ColorBox extends React.Component {
 
   handleClick = e => {
     const color = e.target.dataset.color;
+    console.log("ColorBox triggered, setting color: " + color);
     this.props.onClick(color);
+    document.getElementById(this.props.color);
   };
 
   getBorderStyle = () => {
@@ -34,12 +40,18 @@ class ColorBox extends React.Component {
   render() {
     const { color, active } = this.props;
     const className = classnames("colorBox", { activeBox: active });
+    const colorName = COLOR_PICKER_NAMES[COLOR_PICKER_DEFAULT.indexOf(color)];
 
     return (
       <div
+        role="button"
+        tabIndex="0"
+        aria-label={colorName}
         className={className}
         onClick={this.handleClick}
+        onKeyPressCapture={this.handleClick}
         data-color={color}
+        id={color}
         style={{ background: color, border: this.getBorderStyle() }}
       />
     );

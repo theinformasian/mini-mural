@@ -48,3 +48,7 @@ Development was done on a Mac, and I did not test on a PC. Would consider if the
 ## Other notes
 
 DO NOT use `role="application"`, as this disables native keyboard behaviors and controls (e.g. `cmd` + `c`)
+
+## Resources
+
+* W3C [fake button implementation](https://www.w3.org/TR/wai-aria-practices-1.1/examples/button/button.html) resources

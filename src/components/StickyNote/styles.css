@@ -19,7 +19,7 @@
 }
 
 .selected {
-  border: 2px solid #9dc8ff;
+  border: 3px solid #9dc8ff;
   border-radius: 5px;
 }
 
@@ -39,4 +39,18 @@
 
 .sticky-note-content:focus {
   outline: none;
+}
+
+h3 {
+  /* repurposing h3s for all sticky notes/object level SR content*/
+  display: none;
+}
+
+.sr-only {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
