@@ -10,3 +10,5 @@ export const COLOR_PICKER_DEFAULT = [
   "#c4e9ff",
   "#deffce"
 ];
+
+export const COLOR_PICKER_NAMES = ["pink", "purple", "blue", "green"];
