@@ -38,7 +38,6 @@ class Mural extends React.Component {
   };
 
   addNoteToMural = e => {
-    console.log("adding note to mural");
     if (e.target.classList.contains("sticky-note-content")) {
       return;
     }
@@ -65,12 +64,12 @@ class Mural extends React.Component {
     if (e.key === "Shift") {
       this.props.enableMultipleSelection();
     }
-    if (e.key === "Enter") {
-      console.log("enter key pressed");
-      // random new note props
-      const note = {};
-      this.addNoteToMural(note);
-    }
+    // if (e.key === "Enter") {
+    //   console.log("enter key pressed");
+    //   // random new note props
+    //   const note = {};
+    //   this.addNoteToMural(note);
+    // }
   };
 
   handleKeyUp = e => {

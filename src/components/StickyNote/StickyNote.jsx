@@ -14,6 +14,7 @@ class StickyNote extends React.Component {
     selected: PropTypes.bool,
     setSelectedNote: PropTypes.func,
     pushSelectedNote: PropTypes.func,
+    clearSelectedNote: PropTypes.func,
     updateNote: PropTypes.func,
     deleteNote: PropTypes.func
   };
@@ -41,14 +42,6 @@ class StickyNote extends React.Component {
     this.textarea.current.addEventListener("dblclick", this.editNote);
     // possible performance issues, if it's always listening for keyups and checking if they're 'enter'
   }
-
-  keyDown = e => {
-    //it triggers by pressing the enter key
-    console.log("key pressed");
-    if (e.keyCode === 13) {
-      this.editNote;
-    }
-  };
 
   selectNote = e => {
     const {
