@@ -19,8 +19,9 @@ class Welcome extends React.Component {
         className={showHideClassName}
         id="welcome"
         title="Mural Instructions"
+        tabIndex="-1"
       >
-        <img src={logo} className="logo" alt="logo" />
+        <img src={logo} className="logo" alt="logo" aria-hidden="true" />
         <FontAwesomeButton
           id={"close-modal-button"}
           buttonClass={"close-modal"}
@@ -30,12 +31,14 @@ class Welcome extends React.Component {
           style={{ display: displayStyle }}
         />
         <div className="instructions">
-          <p>Click on a color icon to add a note of that color.</p>
           <p>
-            Edit Note: <span className="key">Double Click</span>
+            Add Note: <span className="key">Double Click</span> Mural Canvas
           </p>
           <p>
-            Multiple Selection: <span className="key">Shift</span>
+            Edit Note: <span className="key">Double Click</span> Note
+          </p>
+          <p>
+            Multiple Selection: <span className="key">Shift</span> + Click
           </p>
           <p>
             Copy Notes: <span className="key">Ctrl</span> +{" "}

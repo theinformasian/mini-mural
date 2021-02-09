@@ -27,7 +27,11 @@ class ColorPicker extends React.Component {
       />
     ));
 
-    return <div className="ColorPicker">{colorBoxes}</div>;
+    return (
+      <div className="ColorPicker" aria-label="Color Picker">
+        {colorBoxes}
+      </div>
+    );
   }
 }
 

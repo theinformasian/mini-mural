@@ -22,7 +22,7 @@ class Toolbar extends React.Component {
 
   render() {
     return (
-      <div className="Toolbar">
+      <div className="Toolbar" role="Toolbar" aria-label="Mural App Toolbar">
         <ColorPicker ariaAnnounce={this.props.ariaAnnounce} />
         <ClipboardManager />
         <div className="Actions">

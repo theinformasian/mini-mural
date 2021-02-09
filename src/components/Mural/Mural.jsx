@@ -36,6 +36,7 @@ class Mural extends React.Component {
     this.mural.current.addEventListener("dblclick", this.addNoteToMural);
     this.mural.current.addEventListener("keydown", this.handleKeyDown);
     this.mural.current.addEventListener("keyup", this.handleKeyUp);
+    document.getElementById("welcome").focus();
   }
 
   ariaAnnounce = content => {
@@ -156,12 +157,13 @@ class Mural extends React.Component {
      */
     return (
       <div id="Mural" className="Mural" ref={this.mural}>
+        <Welcome show={this.state.modalShow} closeButton={this.closeModal} />
         <Toolbar
           ariaAnnounce={this.ariaAnnounce}
           addNoteToMural={this.addNoteToMural}
           helpButton={this.showModal}
         />
-        <Welcome show={this.state.modalShow} closeButton={this.closeModal} />
+
         {StickyNotes}
         <span
           ref={this.srContent}
