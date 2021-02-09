@@ -14,27 +14,32 @@ class Toolbar extends React.Component {
     this.props.addNoteToMural(e);
   };
 
-  helpButtonClick = e => {
-    console.log("Help is on the way! Eventually!");
-  };
+  // helpButtonClick = e => {
+  //   console.log("Help is on the way! Eventually!");
+  //   // TODO: remove display none from Welcome, add placement styling
+  //   // set focus to first focusable element, aka close button
+  // };
 
   render() {
     return (
       <div className="Toolbar">
-        <ColorPicker />
+        <ColorPicker ariaAnnounce={this.props.ariaAnnounce} />
         <ClipboardManager />
         <div className="Actions">
           <FontAwesomeButton
+            id={"add-note-button"}
             buttonClass={"icon toolbar-add-button"}
             faClass={"fa fa-plus-circle"}
             label={"Add note"}
             handleOnClick={this.addButtonClick}
           />
           <FontAwesomeButton
+            id={"help-button"}
             buttonClass={"icon toolbar-add-button"}
             faClass={"fa fa-question-circle"}
             label={"Help"}
-            handleOnClick={this.helpButtonClick}
+            handleOnClick={this.props.helpButton}
+            menuButton={true}
           />
         </div>
       </div>

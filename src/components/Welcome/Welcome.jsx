@@ -6,18 +6,28 @@ import "./styles.css";
 
 class Welcome extends React.Component {
   render() {
-    const { notes } = this.props;
+    const { notes, closeButton, show, children } = this.props;
+
+    const showHideClassName = show ? "Welcome" : "display-none";
+
+    const displayStyle = show ? "flex" : "none";
 
     if (!isEmpty(notes)) return null; // if there are notes present, don't return this
 
     return (
-      <div className="Welcome">
+      <div
+        className={showHideClassName}
+        id="welcome"
+        title="Mural Instructions"
+      >
         <img src={logo} className="logo" alt="logo" />
         <FontAwesomeButton
+          id={"close-modal-button"}
           buttonClass={"close-modal"}
           faClass={"fa fa-times-circle-o"}
-          label={"Add note"}
-          handleOnClick={this.addButtonClick}
+          label={"Mural Instructions, Close modal"}
+          handleOnClick={closeButton}
+          style={{ display: displayStyle }}
         />
         <div className="instructions">
           <p>Click on a color icon to add a note of that color.</p>

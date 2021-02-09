@@ -32,3 +32,10 @@
   opacity: 0.4;
   user-select: none;
 }
+
+.modal {
+}
+
+.display-none {
+  display: none;
+}

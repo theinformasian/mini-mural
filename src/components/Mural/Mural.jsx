@@ -23,6 +23,12 @@ class Mural extends React.Component {
     super(props);
     this.mural = React.createRef();
     this.srContent = React.createRef();
+    this.state = {
+      modalShow: true
+    };
+
+    this.showModal = this.showModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   componentDidMount() {
@@ -39,6 +45,22 @@ class Mural extends React.Component {
     window.setTimeout(function() {
       ariaLiveRegion.innerHTML = content;
     }, 100);
+  };
+
+  showModal = () => {
+    this.setState({ modalShow: true });
+    this.ariaAnnounce("Opening Instructions");
+    window.setTimeout(function() {
+      document.getElementById("close-modal-button").focus();
+    }, 1500);
+  };
+
+  closeModal = () => {
+    this.setState({ modalShow: false });
+    this.ariaAnnounce("Closing Instructions");
+    window.setTimeout(function() {
+      document.getElementById("help-button").focus();
+    }, 1500);
   };
 
   clearSelectedNotes = e => {
@@ -119,27 +141,34 @@ class Mural extends React.Component {
             y={y}
             selected={selected}
             key={id}
-            announce={this.ariaAnnounce}
+            announce={this.ariaAnnounce} // give every sticky note an ariaAnnounce trigger
           />
         );
       }
     );
 
-    // span for aria live region; onclick handled by button parent
-    // role="status" is implicitly aria-live="polite"
+    /** role="status" (is implicitly aria-live="polite")
+     *  vs. aria-live="assertive"
+     *
+     * I currently prefer aria-live="assertive" because it
+     * has the aria announcement override the meaningless
+     * "React mini mural, web content" from focus handoff
+     */
     return (
       <div id="Mural" className="Mural" ref={this.mural}>
         <Toolbar
           ariaAnnounce={this.ariaAnnounce}
           addNoteToMural={this.addNoteToMural}
+          helpButton={this.showModal}
         />
-        <Welcome />
+        <Welcome show={this.state.modalShow} closeButton={this.closeModal} />
         {StickyNotes}
         <span
           ref={this.srContent}
           className="sr-only"
           id="announcements"
-          role="status"
+          // role="status"
+          aria-live="assertive"
           aria-hidden="true"
         />
       </div>

@@ -23,6 +23,7 @@ class ColorPicker extends React.Component {
         onClick={this.pickColor}
         active={currentColor === color}
         key={uniqueId()}
+        ariaAnnounce={this.props.ariaAnnounce}
       />
     ));
 
