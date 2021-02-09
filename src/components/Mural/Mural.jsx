@@ -22,6 +22,7 @@ class Mural extends React.Component {
   constructor(props) {
     super(props);
     this.mural = React.createRef();
+    this.srContent = React.createRef();
   }
 
   componentDidMount() {
@@ -32,7 +33,7 @@ class Mural extends React.Component {
   }
 
   ariaAnnounce = content => {
-    const ariaLiveRegion = document.getElementById("announcements");
+    const ariaLiveRegion = this.srContent.current;
     ariaLiveRegion.setAttribute("aria-hidden", "false"); // reveal to SR
     ariaLiveRegion.innerHTML = ""; // clear previous
     window.setTimeout(function() {
@@ -135,6 +136,7 @@ class Mural extends React.Component {
         <Welcome />
         {StickyNotes}
         <span
+          ref={this.srContent}
           className="sr-only"
           id="announcements"
           role="status"
