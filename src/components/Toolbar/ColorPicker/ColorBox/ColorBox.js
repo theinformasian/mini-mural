@@ -12,13 +12,18 @@ class ColorBox extends React.Component {
   };
 
   handleClick = e => {
-    const color = e.target.dataset.color;
-    // const msg = color + ", selected";
-    // this.props.ariaAnnounce(msg);
+    // handle screen reader announcement
+    const { colorName } = this.props;
+    const msg = colorName + ", selected";
+    this.props.ariaAnnounce(msg);
     console.log("ColorBox triggered, setting color: " + color);
-    document.getElementById(color).focus();
+
+    // set state current_color
+    const color = e.target.dataset.color;
     this.props.onClick(color);
-    // const what = document.getElementById(this.props.color); // what does this even do
+
+    // set focus back to this button
+    document.getElementById(color).focus();
   };
 
   getBorderStyle = () => {
@@ -43,12 +48,9 @@ class ColorBox extends React.Component {
 
     return (
       <button
-        // role="button"
-        // tabIndex="0"
         aria-label={colorName}
         className={className}
         onClick={this.handleClick}
-        //  onKeyPressCapture={this.handleClick}
         data-color={color}
         id={color}
         style={{ background: color, border: this.getBorderStyle() }}

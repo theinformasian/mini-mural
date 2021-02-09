@@ -51,7 +51,7 @@ Development was done on a Mac, and I did not test on a PC. Would consider if the
 | -------- | ------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | P3       | `open`        | Mural.jsx (line 52)            | KNOWN BUG: due to top left corner placement, a note could be placed somewhere that extends the window size, which then extends the max coordinate that can be used for placement                              |
 | P2       | `open`        | Sticky Notes:Delete            | Since the Delete icon is only surfaced via note selection, but is injected into DOM Order after the note, it is "skipped" when tabbing backwards                                                              |
-| P1       | `open`        | General                        | Focus is lost upon "button press" of ColorPicker; jumps to next interactive element, which is Add Note button. Same with pressing Delete button                                                               |
+| ~~P1~~   | `CLOSED`      | ~~General~~                    | ~~Focus is lost upon "button press" of ColorPicker; jumps to next interactive element, which is Add Note button. Same with pressing Delete button~~                                                           |
 | P1       | `open`        | Sticky Notes                   | Screen reader focus doesn't trigger selected state change                                                                                                                                                     |
 | P1       | `open`        | Sticky Notes                   | Custom focus state is not removed when focus moved from first or last Sticky Note to out of Mural                                                                                                             |
 | P3       | `featRequest` | Color Picker                   | Make this an input type="radio"                                                                                                                                                                               |
@@ -62,6 +62,8 @@ Development was done on a Mac, and I did not test on a PC. Would consider if the
 | P0       | `open`        | Sticky Notes/Clipboard Manager | copy/paste is as broken as keyboard select, but works for what is able to be selected.                                                                                                                        |
 | P0       | `open`        | Clipboard Manager              | Add ARIA announcement for copied/paste                                                                                                                                                                        |
 | P2       | `featRequest` | General                        | After creating a new note, set focus to it                                                                                                                                                                    |
+| P0       | `open`        | Welcome / Help button          | Modal not complete; focus isn't trapped within modal, and help button isn't able to open the modal if notes are still inside (haven't altered original logic)                                                 |
+| P1       | `open`        | Add Note Button/ariaAnnounce   | remaining on the same button and triggering multiple keypresses fails to update aria-live region (e.g. when adding multiple notes in succession)                                                              |
 
 ## Other notes
 
@@ -73,5 +75,6 @@ DO NOT use `role="application"`, as this disables native keyboard behaviors and 
 
 * W3C [fake button implementation](https://www.w3.org/TR/wai-aria-practices-1.1/examples/button/button.html) resources
 * Inclusive Components' [Toggletip tutorial](https://inclusive-components.design/tooltips-toggletips/) and rationale
+* Inclusive Components' [Menu Buttons](https://inclusive-components.design/menus-menu-buttons/) discussion;
 * Re-reading [React refs documentation](https://reactjs.org/docs/refs-and-the-dom.html) -> realization of how to code Sticky Notes
 * I'm too tired to understand react lifecycles to implement, but pretty sure this will be useful later: https://medium.com/swlh/improve-accessibility-in-your-react-app-by-managing-focus-in-mutable-content-4ddf4ed92186
