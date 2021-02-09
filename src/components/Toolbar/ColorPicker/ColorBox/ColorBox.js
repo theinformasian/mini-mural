@@ -16,7 +16,6 @@ class ColorBox extends React.Component {
     const { colorName } = this.props;
     const msg = colorName + ", selected";
     this.props.ariaAnnounce(msg);
-    console.log("ColorBox triggered, setting color: " + color);
 
     // set state current_color
     const color = e.target.dataset.color;

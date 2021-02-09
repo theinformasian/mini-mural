@@ -6,20 +6,25 @@ import "./styles.css";
 
 class Welcome extends React.Component {
   render() {
-    const { notes, closeButton, show, children } = this.props;
+    const { notes, closeButton, show } = this.props;
 
     const showHideClassName = show ? "Welcome" : "display-none";
 
     const displayStyle = show ? "flex" : "none";
 
-    if (!isEmpty(notes)) return null; // if there are notes present, don't return this
+    /** Allowing to display even when notes are present,
+     * but it will cover up existing notes under it while
+     * modal implementation not complete. Later, return
+     * a modal version of itself here.
+     * */
+    // if (!isEmpty(notes)) return null; // if there are notes present, don't return this
 
     return (
       <div
         className={showHideClassName}
         id="welcome"
         title="Mural Instructions"
-        tabIndex="-1"
+        aria-label="Mural Instructions"
       >
         <img src={logo} className="logo" alt="logo" aria-hidden="true" />
         <FontAwesomeButton
