@@ -3,7 +3,7 @@
 ## Initial audit observations
 
 WAVE audit
-![initial WAVE audit results. 13 contrast errors, 4 alerts, and 1 aria](WAVE-initial-run.png)
+![initial WAVE audit results. 13 contrast errors, 4 alerts, and 1 aria](img/WAVE-initial-run.png)
 
 * Only react logo and how to guide are SR visible
 * silly logo alt-text, -> "logo, empty group"

@@ -1,6 +1,6 @@
 # Mini Mural Summary
 
-That was fun! This exercise taught me just how much more I have yet to learn with React 😅, and gave me a roadmap to get there.
+That was fun! This exercise taught me just how much more I have yet to learn with React 😅, and gave me a roadmap to get there. Go to [the gallery](before-after.md) to see before and after gifs.
 
 ## Summary of work
 
@@ -38,6 +38,12 @@ Focus is set to the appropriate target element:
 
 To complete this implementation, focus should be trapped within the modal until it is closed. The component would also be better modeled as a [Toggletip](https://inclusive-components.design/tooltips-toggletips/) instead of a modal.
 
+### Using WAVE to catch errors
+
+Periodically running WAVE helps you keep track of bugs in your code without having to manually test the whole thing. This screenshot identifies a broken ARIA reference where I realized I was using a `className` instead of an `id` for `aria-labelledby`.
+
+![Midpoint WAVE audit screenshot](img/WAVE-initial-run.png)
+
 ## Areas of improvement
 
 Now that we've covered some best practices, here are some bad practices:
@@ -45,6 +51,7 @@ Now that we've covered some best practices, here are some bad practices:
 * poor variable/state management (almost anti-tokenization)
   * lots of hacky solutions and direct references to the DOM, instead of via react techniques
   * a lot of code is repeated in hard-to-find areas
+  * no consistent styling/behavior passing system
 * not robust
   * aria announcements are cleared on a timer, so if multiple announcements are triggered before the reset (2000ms), they won't be announced.
 
@@ -63,10 +70,8 @@ Though some features were made more accessible, they weren't fully or consistent
 | P1 | `open` | ariaAnnonce | Even with aria-live="assertive", still timeout >1000ms to not be overriden by the aria-label reading of the newly focused element, which gives a poor user experience with the lag in focus. Unsure why this is happening. |
 | P2 | `open` | Mural / ColorBox | On page load/refresh, focus is set to the Pink (first) color box button by default, not sure why. It should be focusing on the first thing in the DOM, which is the Welcome component. |
 | P2 | `open` | Sticky Notes (_Content_) | delete button doesn't indicate which note it is associated with |
-| P2 | `open` | Sticky Note | Broken styling logic; single mouse click triggers "editing" styling |
+| P2 | `open` | Sticky Note | Broken styling logic; single mouse click triggers "editing" styling, but contenteditable is only set to true after another click. |
 | P2 | `featRequest` | General | After creating a new note, set focus to it |
 | P2 | `open` | Sticky Notes:Delete | Since the Delete icon is only surfaced via note selection, but is injected into DOM Order after the note, it is "skipped" when tabbing backwards |
 | P3 | `open` | Mural.jsx (line 52) | Since stickies are positioned according to top left corner coordinates, a note could be placed where the corner is within the 100vh/vw window but the body of the sticky note extends the window size, which then extends the max coordinate that can be used for placement, and repeat. |
 | P3 | `featRequest` | Color Picker | Make this an input type="radio", or at least an ARIA role="radiogroup" as in this [W3C toolbar example](https://www.w3.org/TR/wai-aria-practices/examples/toolbar/toolbar.html). |
-
-## Modularization

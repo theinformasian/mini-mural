@@ -39,7 +39,7 @@ class StickyNote extends React.Component {
   componentDidMount() {
     this.textarea.current.addEventListener("focus", this.selectNote, true);
     this.textarea.current.addEventListener("blur", this.handleOnBlur, true);
-    this.textarea.current.addEventListener("click", this.selectNote);
+    // this.textarea.current.addEventListener("click", this.selectNote); // THIS!!! is why :()
     this.textarea.current.addEventListener("dblclick", this.editNote);
     // this.textarea.current.addEventListener("keydown", this.handleKeyDown);
     // possible performance issues, if it's always listening for keyups and checking if they're 'enter'
@@ -147,7 +147,7 @@ class StickyNote extends React.Component {
             ref={this.textarea}
             style={{ color: textColor, userSelect: editMode ? "text" : "none" }}
             suppressContentEditableWarning="true"
-            tabIndex="0"
+            // tabIndex="0"
           >
             {text}
           </p>
