@@ -40,11 +40,15 @@ class Mural extends React.Component {
 
   ariaAnnounce = content => {
     const ariaLiveRegion = this.srContent.current;
-    ariaLiveRegion.setAttribute("aria-hidden", "false"); // reveal to SR
     ariaLiveRegion.innerHTML = ""; // clear previous
     window.setTimeout(function() {
-      ariaLiveRegion.innerHTML = content;
+      ariaLiveRegion.setAttribute("aria-hidden", "false"); // reveal to SR
     }, 100);
+    ariaLiveRegion.innerHTML = content;
+
+    window.setTimeout(function() {
+      ariaLiveRegion.innerHTML = ""; // revert content
+    }, 2000);
   };
 
   showModal = () => {
@@ -52,7 +56,7 @@ class Mural extends React.Component {
     this.ariaAnnounce("Opening Instructions");
     window.setTimeout(function() {
       document.getElementById("close-modal-button").focus();
-    }, 1500);
+    }, 250);
   };
 
   closeModal = () => {
@@ -60,7 +64,7 @@ class Mural extends React.Component {
     this.ariaAnnounce("Closing Instructions");
     window.setTimeout(function() {
       document.getElementById("help-button").focus();
-    }, 1500);
+    }, 500);
   };
 
   clearSelectedNotes = e => {
@@ -105,7 +109,6 @@ class Mural extends React.Component {
   };
 
   handleKeyDown = e => {
-    console.log("keydown on Mural");
     if (e.key === "Shift") {
       this.props.enableMultipleSelection();
     }

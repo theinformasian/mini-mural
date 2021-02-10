@@ -21,7 +21,7 @@ button {
 .close-modal {
   background: transparent;
   color: white;
-  font-size: 3rem;
+  font-size: 2rem;
   position: absolute;
   padding: 3px;
   height: 44px;
@@ -32,4 +32,10 @@ button {
   align-items: center;
   top: 15px;
   right: 15px;
+  border: none;
+}
+
+.close-modal:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px white;
 }

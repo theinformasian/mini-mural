@@ -24,7 +24,7 @@
 }
 
 .edit-mode {
-  border: 2px solid #94c55e;
+  border: 4px dashed #94c55e;
 }
 
 .sticky-note-content {

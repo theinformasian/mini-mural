@@ -13,11 +13,11 @@ class FontAwesomeButton extends React.Component {
   };
 
   // the HACKIEST workaround...re-hide announcements when focus moves off a FontAwesomeButton
-  handleOnBlur = e => {
-    document
-      .getElementById("announcements")
-      .setAttribute("aria-hidden", "true");
-  };
+  // handleOnBlur = e => {
+  //   document
+  //     .getElementById("announcements")
+  //     .setAttribute("aria-hidden", "true");
+  // };
 
   /** // onClick={handleOnClick} */
   render() {

@@ -34,7 +34,6 @@ class StickyNote extends React.Component {
     super(props);
     this.textarea = React.createRef();
     this.state = { editMode: false };
-    this.focusTextInput = this.focusTextInput.bind(this);
   }
 
   componentDidMount() {
@@ -42,6 +41,7 @@ class StickyNote extends React.Component {
     this.textarea.current.addEventListener("blur", this.handleOnBlur, true);
     this.textarea.current.addEventListener("click", this.selectNote);
     this.textarea.current.addEventListener("dblclick", this.editNote);
+    // this.textarea.current.addEventListener("keydown", this.handleKeyDown);
     // possible performance issues, if it's always listening for keyups and checking if they're 'enter'
   }
 
@@ -49,11 +49,6 @@ class StickyNote extends React.Component {
     // if note is being removed, set focus to next element
     // console.log("sticky note unmounting!");
     // this.textarea.current.nextElementByTabIndex.focus();
-  }
-
-  focusTextInput() {
-    this.setState({ editMode: true });
-    this.textarea.current.focus();
   }
 
   selectNote = e => {
@@ -73,6 +68,7 @@ class StickyNote extends React.Component {
 
   editNote = () => {
     this.setState({ editMode: true });
+    this.props.announce("Editing note");
     this.textarea.current.focus();
   };
 
@@ -100,7 +96,6 @@ class StickyNote extends React.Component {
       };
       this.props.updateNote(updatedNote);
     }
-
     this.setState({ editMode: false });
   };
 
@@ -114,10 +109,11 @@ class StickyNote extends React.Component {
     });
 
     const textColor = Color(color)
-      .darken(0.4)
-      .desaturate(0.3);
+      .darken(0.7)
+      .desaturate(0.1);
     const boxShadowColor = Color(color).darken(0.3);
-    const h3Heading = id + "-h3";
+    const h3Id = id + "-h3";
+    const pId = id + "-p";
 
     return (
       <div
@@ -133,16 +129,18 @@ class StickyNote extends React.Component {
           className="container"
           style={{
             background: color,
-            boxShadow: `0px 0px 1px 3px ${boxShadowColor}`,
+            outline: selected ? "3px ${textColor}" : "1px ${boxShadowColor}",
+            // boxShadow: `0px 0px 1px 3px ${boxShadowColor}`,
             padding: selected ? "6px" : "8px"
           }}
           id={id}
           data-type="sticky-note"
-          aria-labelledby={`${h3Heading} sticky-note-content`}
-          onClick={this.focusTextInput}
+          aria-labelledby={`${h3Id} ${pId}`}
+          onClick={this.editNote}
         >
-          <h3 id={h3Heading}>Sticky Note</h3>
+          <h3 id={h3Id}>Sticky Note</h3>
           <p
+            id={pId}
             className="sticky-note-content"
             contentEditable={editMode}
             onBlur={this.handleOnBlur}
@@ -150,7 +148,6 @@ class StickyNote extends React.Component {
             style={{ color: textColor, userSelect: editMode ? "text" : "none" }}
             suppressContentEditableWarning="true"
             tabIndex="0"
-            onKeyDown={this.keyDown}
           >
             {text}
           </p>

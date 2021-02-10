@@ -30,7 +30,7 @@ class Welcome extends React.Component {
         <FontAwesomeButton
           id={"close-modal-button"}
           buttonClass={"close-modal"}
-          faClass={"fa fa-times-circle-o"}
+          faClass={"fa fa-times"}
           label={"Mural Instructions, Close modal"}
           handleOnClick={closeButton}
           style={{ display: displayStyle }}
